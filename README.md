@@ -9,7 +9,7 @@
 
 + **Installation of RadareEye :**
  ```
- git clone https://github.com/SouravSec/RadareEye
+ git clone https://github.com/souravbaghz/RadareEye
  ```
 ### Usage:
 ```
