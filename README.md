@@ -31,7 +31,7 @@ sudo bash radare XX:XX:XX:XX:XX:XX -ble
 Same for the Wifi also with -wifi option, Here XX:XX:XX:XX:XX:XX means your target device's MAC Address & make sure to do with sudo (if you aren't root). I didn't add scanning feature in this script but you can get thr MAC Adress easily by executing 'hcitool scan' for bluetooth and 'hcitool lescan' for BLE Devices in terminal.
 ***
 <p align="center">
-  <img  width="300" src="screenshot.png" />
+  <img  width="700" src="screenshot.png" />
 </p>
 After running RadareEye, It will ask you 'Command you want to trigger?' , you can skip it by simply keep it blank and it RadareEye will show you status of your target whether it's in range or not without triggering any command. If you want to trigger any command when your target comes in between range then enter a command when it asks.
  Examples :
