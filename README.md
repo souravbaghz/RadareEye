@@ -9,7 +9,7 @@
 
 + **Installation of RadareEye :**
  ```
- git clone https://github.com/SouravSec/CANghost
+ git clone https://github.com/SouravSec/RadareEye
  ```
 ### Usage:
 ```
@@ -35,12 +35,13 @@ Same for the Wifi also with -wifi option, Here XX:XX:XX:XX:XX:XX means your targ
 </p>
 After running RadareEye, It will ask you 'Command you want to trigger?' , you can skip it by simply keep it blank and it RadareEye will show you status of your target whether it's in range or not without triggering any command. If you want to trigger any command when your target comes in between range then enter a command when it asks.
  Examples :
-+ Below given command will shutdown our system imediatly when target device comes in range.
+
++ **Below given command will shutdown our system imediatly when target device comes in range.**
 
 ```
 [+]Command you want to trigger? :shutdown now
 ```
-+ It will run your other script
++ **It will run your other script**
 ```
 [+]Command you want to trigger? :./myscript.py
 ```
