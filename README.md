@@ -1,4 +1,4 @@
-     <p align="center">
+<p align="center">
   <img  width="300" src="logo.png" />
 </p>
 <h3 align="center"><b>A tool made for specially scanning nearby devices[BLE,Bluetooth & Wifi] and execute our given command on our system when the target device comes in between range.</b></h3>
