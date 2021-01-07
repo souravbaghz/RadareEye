@@ -1,0 +1,131 @@
+#!/bin/bash
+
+## Project Name: RadareEye v1
+## Coded & Owned By @souravbaghz
+## https://souravbaghz.github.io
+## "Copying someone's code doesn't make you coder"
+
+
+##Colors Used ##
+bold="\e[1m"
+yellow="\e[93m"
+red="\e[31m"
+reset="\e[0m"
+blink="\e[5m"
+redbg="\e[41m"
+green="\e[1;32m"
+greenbg="\e[1;42m"
+black="\e[30m"
+
+
+target="$1"
+
+## Banner ##
+banner(){
+clear
+echo -e "${green}
+ ██████╗  █████╗ ██████╗  █████╗ ██████╗ ███████╗███████╗██╗   ██╗███████╗
+ ██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝╚██╗ ██╔╝██╔════╝
+ ██████╔╝███████║██║  ██║███████║██████╔╝█████╗  █████╗   ╚████╔╝ █████╗  
+ ██╔══██╗██╔══██║██║  ██║██╔══██║██╔══██╗██╔══╝  ██╔══╝    ╚██╔╝  ██╔══╝  
+ ██║  ██║██║  ██║██████╔╝██║  ██║██║  ██║███████╗███████╗   ██║   ███████╗
+ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝   ╚═╝   ╚══════╝
+                   ${greenbg}${yellow}.:.:.: Coded By @souravbaghz :.:.:.${reset}                   
+ "
+}
+
+
+if [ -z "$target" ]
+   then
+      echo "[!] You didn't gave any target mac addrress"
+      echo " Usage: ./$0 <macaddress> <option> "
+   echo "";
+   echo " Available options are:-      ";
+   echo "    -blue  Bluetooth RadareEye";
+   echo "    -ble   BLE RadareEye      ";
+   echo "    -wifi  Wifi RadareEye";
+   echo "    -h     This Help Menu With Banner";
+   exit 1
+fi   
+
+
+
+# Command Input ##############
+command(){                
+echo 
+read -p "[+]Command you want to trigger? :" cmd
+echo "=====================================================[$target]=="
+}
+
+
+# Bluetooth radare ##############
+blueradare(){
+command
+while :
+do macaddr=$(hcitool scan | grep -w "$target" | awk '{print $1}')
+if [[ $macaddr == $target ]]; 
+then echo -e "[${red}!${reset}]Your target discovered in range!";
+     sleep 0.2
+     $cmd;
+else echo -e "[${red}!${reset}]Out of range now..."
+fi
+  done
+}
+
+# BLE radare ##############
+bleradare(){
+command
+while :
+do macaddr=$(timeout -s SIGINT 15s hcitool lescan | grep -w "$target" | tail -1 |awk '{print $1}')
+if [[ $macaddr == $target ]]; 
+then echo -e "[${red}!${reset}]Your target discovered in range!";
+     sleep 0.2
+     $cmd;
+else echo -e "[${red}!${reset}]Out of range now..."
+fi
+  done
+}
+
+# Wifi radare ##############
+wifiradare(){
+command
+while :
+do macaddr=$(iw wlan0 scan | grep -w "$target" | awk '{print $1}')
+if [[ $macaddr == $target ]]; 
+then echo -e "[${red}!${reset}]Your target discovered in range!";
+     sleep 0.2
+     $cmd;
+else echo -e "[${red}!${reset}]Out of range now..."
+fi
+  done
+}
+
+
+
+banner
+
+case "$2" in
+-blue) echo "[+]Running Bluetooth RadareEye...               .:.Press CTRL+C to Stop.:."
+       blueradare
+      ;;
+-ble) echo "[+]Running BLE RadareEye...                      .:.Press CTRL+C to Stop.:."
+      bleradare
+     ;;
+-wifi) echo "[+]Running Wifi RadareEye...                    .:.Press CTRL+C to Stop.:."
+       wifiradare
+     ;;
+* | -h) echo "=========================================================================="
+   echo " Usage: ./$0 <macaddress> <option>";
+   echo "";
+   echo " Available options are:-      ";
+   echo "    -blue  Bluetooth RadareEye";
+   echo "    -ble   BLE RadareEye      ";
+   echo "    -wifi  Wifi RadareEye";
+   echo "    -h     This Help Menu";
+   ;;
+esac           
+
+
+
+  
+ 
