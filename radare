@@ -90,7 +90,7 @@ fi
 wifiradare(){
 command
 while :
-do macaddr=$(iw wlan0 scan | grep -w "$target" | awk '{print $1}')
+do macaddr=$(iw wlan0 scan | grep -w "$target" | awk '{print $2}')
 if [[ $macaddr == $target ]]; 
 then echo -e "[${red}!${reset}]Your target discovered in range!";
      sleep 0.2
