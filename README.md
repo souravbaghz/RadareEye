@@ -1,7 +1,7 @@
 <p align="center">
   <img  width="300" src="logo.png" />
 </p>
-<h3 align="center"><b>A tool for especially scanning nearby devices and execute a given command on its own system while the target device comes in range..</b></h3>
+<h3 align="center"><b>A tool for scanning nearby devices and execute command when the target device comes in between range..</b></h3>
 
 
 *** 
