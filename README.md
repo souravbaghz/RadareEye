@@ -1,5 +1,5 @@
 <p align="center">
-  <img  width="300" src="logo.png" />
+  <img  width="600" src="radareeye.png" />
 </p>
 <h3 align="center"><b>A tool for scanning nearby devices and execute command when the target device comes in between range..</b></h3>
 
